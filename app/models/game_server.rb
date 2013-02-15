@@ -12,6 +12,10 @@ class GameServer < ActiveRecord::Base
   
   
   def self.port_open?(ip, port, seconds=1)
+    return false if !IPAddress.valid? ip
+    return false if !port.is_a? Integer
+    return false if port.to_i <= 0 || port.to_i > 65535
+    
     Timeout::timeout(seconds) do
       begin
         u = TCPSocket.new(ip, port).close()
