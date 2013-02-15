@@ -18,7 +18,12 @@ class GameServerController < ApplicationController
   end
   
   def destroy
-    
+    @game_server = GameServer.find(params[:id])
+    if @game_server.destroy
+      head :ok
+    else
+      render :json => { :errors => game_server.errors.full_messages }, :status => :unprocessable_entity
+    end
   end
   
   def heartbeat
@@ -47,7 +52,7 @@ private
     if game_server.save
       render :json => game_server
     else
-      render :json => { :errors => game_server.errors.full_messages }, :status => 422
+      render :json => { :errors => game_server.errors.full_messages }, :status => :unprocessable_entity
     end
   end
   
