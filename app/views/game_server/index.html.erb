@@ -1,9 +1,10 @@
 <% if @game_servers.empty? %>
-no game servers found<br>
+  no game servers found<br>
 <% else %>
-game servers<br>
-<% @game_servers.each do |server| %>
-<%= server.id %>: <%= server.ip_address %> (<%= server.num_players %>/<%= server.max_players %>)<br>
+  game servers<br>
+  <% @game_servers.each do |server| %>
+  <%= server.id %>: <%= server.ip_address %> (<%= server.num_players %>/<%= server.max_players %>)<br>
+  <% end %>
 <% end %>
 
 <br>
