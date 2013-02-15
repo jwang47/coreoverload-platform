@@ -7,6 +7,8 @@ CoPlatform::Application.routes.draw do
   put 'game_server/:id/players/add' => 'game_server#player_add'
   put 'game_server/:id/players/remove' => 'game_server#player_remove'
   
+  get 'game_server/:id/heartbeat' => 'game_server#heartbeat'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
