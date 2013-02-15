@@ -14,6 +14,10 @@ class GameServerController < ApplicationController
   end
   
   def create
+    existing_server = GameServer.where(:ip_address => params[:game_server][:ip_address])
+    if existing_server.exists?
+      render :json => existing_server.first and return
+    end
     @game_server = GameServer.create(params[:game_server])
     save_and_render(@game_server)
   end
