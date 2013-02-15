@@ -1,4 +1,9 @@
 CoPlatform::Application.routes.draw do
+  
+  root :to => 'game_server#index'
+  
+  resources :game_server
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
