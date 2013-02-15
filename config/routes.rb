@@ -2,12 +2,13 @@ CoPlatform::Application.routes.draw do
   
   root :to => 'game_server#index'
   
-  resources :game_server
-  
-  put 'game_server/:id/players/add' => 'game_server#player_add'
-  put 'game_server/:id/players/remove' => 'game_server#player_remove'
+  get 'game_server/:id/players/add' => 'game_server#player_add'
+  get 'game_server/:id/players/remove' => 'game_server#player_remove'
   
   get 'game_server/:id/heartbeat' => 'game_server#heartbeat'
+  get 'game_server/check' => 'game_server#check_servers'
+  
+  resources :game_server
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

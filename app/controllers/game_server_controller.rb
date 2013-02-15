@@ -1,5 +1,10 @@
 class GameServerController < ApplicationController
   
+  def check_servers
+    GameServer.check_servers()
+    redirect_to game_server_index_path
+  end
+  
   def index
     @game_servers = GameServer.all
     respond_to do |format|

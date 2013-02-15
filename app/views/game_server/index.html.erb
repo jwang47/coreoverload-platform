@@ -2,3 +2,6 @@ game servers<br>
 <% @game_servers.each do |server| %>
 <%= server.id %>: <%= server.ip_address %> (<%= server.num_players %>/<%= server.max_players %>)<br>
 <% end %>
+
+<br>
+<%= link_to "check servers", game_server_check_path %>

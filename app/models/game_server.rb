@@ -1,4 +1,6 @@
 class GameServer < ActiveRecord::Base
+  include GameServerHelper
+  
   validates :ip_address, :presence => true, :uniqueness => true
   validates :max_players, :presence => true
   
@@ -7,6 +9,30 @@ class GameServer < ActiveRecord::Base
   validate :num_players_gte_zero
   
   attr_accessible :ip_address, :num_players, :max_players, :heartbeat
+  
+  
+  def self.port_open?(ip, port, seconds=1)
+    Timeout::timeout(seconds) do
+      begin
+        u = TCPSocket.new(ip, port).close()
+        true
+      rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+        false
+      end
+    end
+  rescue Timeout::Error
+    false
+  end
+
+  def self.check_servers
+    threads = []
+    GameServer.all.each do |server|
+      threads << Thread.new(server) { |my_server|
+        server.destroy() unless port_open?(server.ip_address, 7777)
+      }
+    end
+    threads.each { |thread| thread.join() }
+  end
   
   def do_heartbeat
     self.heartbeat = Time.current()
