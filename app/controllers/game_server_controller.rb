@@ -8,15 +8,9 @@ class GameServerController < ApplicationController
     end
   end
   
-  
   def create
     @game_server = GameServer.create(params[:game_server])
-    if @game_server.save
-      render :json => @game_server
-    else
-      logger.info @game_server.errors.full_messages
-      render :json => { :errors => @game_server.errors.full_messages }, :status => 422
-    end
+    save_and_render(@game_server)
   end
   
   def update
@@ -25,6 +19,30 @@ class GameServerController < ApplicationController
   
   def destroy
     
+  end
+  
+  def player_add
+    @game_server = GameServer.find(params[:id])
+    # @player = params[:player_id]
+    @game_server.num_players = @game_server.num_players + 1
+    save_and_render(@game_server)
+  end
+  
+  def player_remove
+    @game_server = GameServer.find(params[:id])
+    # @player = params[:player_id]
+    @game_server.num_players = @game_server.num_players - 1
+    save_and_render(@game_server)
+  end
+  
+private
+
+  def save_and_render(game_server)
+    if game_server.save
+      render :json => game_server
+    else
+      render :json => { :errors => game_server.errors.full_messages }, :status => 422
+    end
   end
   
 end

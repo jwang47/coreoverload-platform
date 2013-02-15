@@ -4,6 +4,9 @@ CoPlatform::Application.routes.draw do
   
   resources :game_server
   
+  put 'game_server/:id/players/add' => 'game_server#player_add'
+  put 'game_server/:id/players/remove' => 'game_server#player_remove'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

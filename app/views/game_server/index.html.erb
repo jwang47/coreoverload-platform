@@ -1,4 +1,4 @@
 game servers<br>
 <% @game_servers.each do |server| %>
-<%= server.ip_address %> (<%= server.num_players %>/<%= server.max_players %>)<br>
+<%= server.id %>: <%= server.ip_address %> (<%= server.num_players %>/<%= server.max_players %>)<br>
 <% end %>
