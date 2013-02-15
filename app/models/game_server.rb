@@ -4,7 +4,11 @@ class GameServer < ActiveRecord::Base
   validate :num_players_lt_max_players
   validate :num_players_gte_zero
   
-  attr_accessible :ip_address, :num_players, :max_players
+  attr_accessible :ip_address, :num_players, :max_players, :heartbeat
+  
+  def do_heartbeat
+    self.heartbeat = Time.current()
+  end
   
 private
   

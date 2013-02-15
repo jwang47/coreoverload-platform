@@ -21,6 +21,12 @@ class GameServerController < ApplicationController
     
   end
   
+  def heartbeat
+    @game_server = GameServer.find(params[:id])
+    @game_server.do_heartbeat()
+    save_and_render(@game_server)
+  end
+  
   def player_add
     @game_server = GameServer.find(params[:id])
     # @player = params[:player_id]
