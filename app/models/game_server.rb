@@ -1,7 +1,9 @@
 class GameServer < ActiveRecord::Base
   validates :ip_address, :presence => true, :uniqueness => true
   validates :max_players, :presence => true
-  validate :num_players_lt_max_players
+  
+  # disable max check until UDK game server implements it
+  #validate :num_players_lt_max_players
   validate :num_players_gte_zero
   
   attr_accessible :ip_address, :num_players, :max_players, :heartbeat
