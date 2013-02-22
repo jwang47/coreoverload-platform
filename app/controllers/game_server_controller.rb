@@ -13,6 +13,11 @@ class GameServerController < ApplicationController
     end
   end
   
+  def show
+    @game_server = GameServer.find(params[:id])
+    render :json => @game_server
+  end
+  
   def create
     existing_server = GameServer.where(:ip_address => params[:game_server][:ip_address])
     if existing_server.exists?
@@ -23,7 +28,12 @@ class GameServerController < ApplicationController
   end
   
   def update
-    
+    @game_server = GameServer.find(params[:id])
+    if @game_server.update_attributes(params[:game_server])
+      render :json => @game_server
+    else
+      render :json => { :errors => game_server.errors.full_messages }, :status => :unprocessable_entity
+    end
   end
   
   def destroy
@@ -38,20 +48,6 @@ class GameServerController < ApplicationController
   def heartbeat
     @game_server = GameServer.find(params[:id])
     @game_server.do_heartbeat()
-    save_and_render(@game_server)
-  end
-  
-  def player_add
-    @game_server = GameServer.find(params[:id])
-    # @player = params[:player_id]
-    @game_server.num_players = @game_server.num_players + 1
-    save_and_render(@game_server)
-  end
-  
-  def player_remove
-    @game_server = GameServer.find(params[:id])
-    # @player = params[:player_id]
-    @game_server.num_players = @game_server.num_players - 1
     save_and_render(@game_server)
   end
   

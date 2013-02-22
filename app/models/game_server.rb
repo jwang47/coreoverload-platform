@@ -8,8 +8,24 @@ class GameServer < ActiveRecord::Base
   #validate :num_players_lt_max_players
   validate :num_players_gte_zero
   
-  attr_accessible :ip_address, :num_players, :max_players, :heartbeat
+  attr_accessible :ip_address, :max_players
+  attr_accessible :started_at, :num_red_players, :num_blue_players
   
+  def started_elapsed
+    if self.started_at.nil?
+      0.0 / 0.0
+    else
+      (Time.now.to_f - self.started_at.to_f).to_i
+    end
+  end
+  
+  def num_players
+    num_red_players + num_blue_players
+  end
+  
+  def do_heartbeat
+    self.heartbeat = Time.current()
+  end
   
   def self.port_open?(ip, port, seconds=1)
     return false if !IPAddress.valid? ip
@@ -36,10 +52,6 @@ class GameServer < ActiveRecord::Base
       }
     end
     threads.each { |thread| thread.join() }
-  end
-  
-  def do_heartbeat
-    self.heartbeat = Time.current()
   end
   
 private

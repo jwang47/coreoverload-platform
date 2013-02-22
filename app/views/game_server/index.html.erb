@@ -3,7 +3,10 @@
 <% else %>
   game servers<br>
   <% @game_servers.each do |server| %>
-  <%= server.id %>: <%= server.ip_address %> (<%= server.num_players %>/<%= server.max_players %>)<br>
+  <%= server.id %>: <%= server.ip_address %>
+  (<%= server.num_players %>/<%= server.max_players %> players)
+  <%= server.num_red_players %> Red | <%= server.num_blue_players %> Blue
+  (<%= server.started_elapsed %>)<br>
   <% end %>
 <% end %>
 

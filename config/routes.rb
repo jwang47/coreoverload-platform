@@ -2,9 +2,6 @@ CoPlatform::Application.routes.draw do
   
   root :to => 'game_server#index'
   
-  get 'game_server/:id/players/add' => 'game_server#player_add'
-  get 'game_server/:id/players/remove' => 'game_server#player_remove'
-  
   get 'game_server/:id/heartbeat' => 'game_server#heartbeat'
   get 'game_server/check' => 'game_server#check_servers'
   

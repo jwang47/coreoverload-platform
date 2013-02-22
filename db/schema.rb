@@ -11,15 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215054149) do
+ActiveRecord::Schema.define(:version => 20130222003052) do
 
   create_table "game_servers", :force => true do |t|
     t.string   "ip_address"
-    t.integer  "num_players", :default => 0
-    t.integer  "max_players", :default => 10
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "num_players",      :default => 0
+    t.integer  "max_players",      :default => 10
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.datetime "heartbeat"
+    t.datetime "started_at"
+    t.integer  "num_red_players",  :default => 0
+    t.integer  "num_blue_players", :default => 0
   end
 
 end
