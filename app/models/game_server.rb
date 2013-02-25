@@ -19,12 +19,29 @@ class GameServer < ActiveRecord::Base
     end
   end
   
+  def heartbeat_elapsed
+    if self.started_at.nil?
+      GS_HEARTBEAT_LIMIT + 1
+    else
+      (Time.now.to_f - self.heartbeat.to_f).to_i
+    end
+  end
+  
   def num_players
     num_red_players + num_blue_players
   end
   
   def do_heartbeat
     self.heartbeat = Time.current()
+  end
+  
+  # TODO: Allow game servers to revive themselves
+  def self.checked_all
+    all.each do |server|
+      server.destroy() if server.heartbeat_elapsed() > GS_HEARTBEAT_LIMIT
+    end
+    
+    all
   end
   
   def self.port_open?(ip, port, seconds=1)

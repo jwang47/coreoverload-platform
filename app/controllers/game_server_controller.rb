@@ -6,7 +6,7 @@ class GameServerController < ApplicationController
   end
   
   def index
-    @game_servers = GameServer.all
+    @game_servers = GameServer.checked_all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @game_servers }
@@ -24,6 +24,7 @@ class GameServerController < ApplicationController
       render :json => existing_server.first and return
     end
     @game_server = GameServer.create(params[:game_server])
+    @game_server.do_heartbeat()
     save_and_render(@game_server)
   end
   
