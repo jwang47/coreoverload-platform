@@ -11,7 +11,10 @@ class GameServerController < ApplicationController
       @game_servers = [
         GameServer.new(:ip_address => '185.32.95.1', :max_players => 10, :num_red_players => 3, :num_blue_players => 4, :started_at => 5.minutes.ago),
         GameServer.new(:ip_address => '78.5.23.253', :max_players => 12, :num_red_players => 1, :num_blue_players => 6, :started_at => 1.minutes.ago),
-        GameServer.new(:ip_address => '243.128.32.244', :max_players => 10, :num_red_players => 2, :num_blue_players => 7, :started_at => 10.minutes.ago)
+        GameServer.new(:ip_address => '243.128.32.244', :max_players => 10, :num_red_players => 2, :num_blue_players => 7, :started_at => 10.minutes.ago),
+        GameServer.new(:ip_address => '127.0.0.1', :max_players => 10, :num_red_players => 2, :num_blue_players => 7, :started_at => 10.minutes.ago),
+        #GameServer.new(:ip_address => 'glados1.isi.edu', :max_players => 10, :num_red_players => 1, :num_blue_players => 1, :started_at => 1.minutes.ago),
+        GameServer.new(:ip_address => '128.9.136.225', :max_players => 10, :num_red_players => 6, :num_blue_players => 4, :started_at => 8.minutes.ago)
       ]
       respond_to do |format|
         format.html # index.html.erb
