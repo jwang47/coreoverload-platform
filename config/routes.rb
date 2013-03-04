@@ -1,5 +1,7 @@
 CoPlatform::Application.routes.draw do
-  
+
+  devise_for :users
+
   root :to => 'game_server#index'
   
   get 'game_server/:id/heartbeat' => 'game_server#heartbeat'
