@@ -22,14 +22,15 @@
         <a class="brand" href="#">Core Overload</a>
         <div class="nav-collapse">
           <ul class="nav pull-right">
+            <% if user_signed_in? %>
+            <li><%= link_to "Logged in as " + current_user.email, "javascript:void(0)" %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+            <% else %>
             <li>
-              <form class="navbar-form pull-right">
-                  <input type="text" class="span2" placeholder="Login">
-                  <input type="text" class="span2" placeholder="Password">
-                  <input type="submit" value="Login" class="btn"/>
-              </form>
+              <%= render 'users/sessions/new_inline', :resource => User.new, :resource_name => 'user' %>
             </li>
-            <li><%= link_to "Register"%></li>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -39,11 +40,10 @@
   <div class="container">
     <div class="content">
       <div class="row">
-        <div class="span9"><%= yield %></div>
-        <div class="span3">
-          <h2>About Us</h2>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="span4">
+          Core Overload is one of the selected games for the 2012-2013 USC final games year. It’s a fast-paced top down shoot ’em up with deep customization, built in UDK from the ground-up to be focused on networked (online) multiplayer. Players are able to build their ships using different combinations of wings, engines, chassis, weapons, and cores. They’re then able to import these customized ships into an online environment and play against other players in PvP and Team vs. team combat. During battle, players are able to break apart their opponents piece-by-piece by destroying individual parts and weaken the overall ship. Upon being destroyed, the player is able to reconfigure their ship during the respawn time to address the competition.
         </div>
+        <div class="span8"><%= yield %></div>
       </div>
     </div>
   </div>
