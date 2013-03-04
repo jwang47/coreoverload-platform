@@ -5,13 +5,17 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+gem 'font-awesome-rails'
+
 gem 'devise'
 
 gem 'ipaddress'
 
 group :production do
   gem 'pg'
-  gem 'thin'
 end
 
 group :development, :test do
