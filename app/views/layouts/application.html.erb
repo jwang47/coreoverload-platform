@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -41,9 +41,15 @@
     <div class="content">
       <div class="row">
         <div class="span4">
+          <div class="well">
           Core Overload is one of the selected games for the 2012-2013 USC final games year. It’s a fast-paced top down shoot ’em up with deep customization, built in UDK from the ground-up to be focused on networked (online) multiplayer. Players are able to build their ships using different combinations of wings, engines, chassis, weapons, and cores. They’re then able to import these customized ships into an online environment and play against other players in PvP and Team vs. team combat. During battle, players are able to break apart their opponents piece-by-piece by destroying individual parts and weaken the overall ship. Upon being destroyed, the player is able to reconfigure their ship during the respawn time to address the competition.
+          </div>
         </div>
-        <div class="span8"><%= yield %></div>
+        <div class="span8">
+          <div class="well">
+            <%= yield %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
