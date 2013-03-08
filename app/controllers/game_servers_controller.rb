@@ -1,4 +1,4 @@
-class GameServerController < ApplicationController
+class GameServersController < ApplicationController
   
   def check_servers
     GameServer.check_servers()

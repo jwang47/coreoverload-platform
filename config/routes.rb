@@ -1,12 +1,13 @@
 CoPlatform::Application.routes.draw do
   
-  root :to => 'users#index'
+  root :to => 'game_servers#index'
 
   post 'friendships' => 'friendships#create'
   get 'friendships' => 'friendships#index'
 
   get 'users/:id/friends' => 'users#friends'
 
+  get 'users' => 'users#index', :as => 'users'
   devise_for :users
   devise_scope :users do
     namespace :api do
@@ -16,10 +17,9 @@ CoPlatform::Application.routes.draw do
     end
   end
   
-  get 'game_server/:id/heartbeat' => 'game_server#heartbeat'
-  get 'game_server/check' => 'game_server#check_servers'
-  
-  resources :game_server
+  get 'game_servers/:id/heartbeat' => 'game_servers#heartbeat'
+  get 'game_servers/check' => 'game_servers#check_servers'
+  resources :game_servers
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
