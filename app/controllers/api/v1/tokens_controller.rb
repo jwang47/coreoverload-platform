@@ -30,7 +30,7 @@ class Api::V1::TokensController  < ApplicationController
       logger.info("User #{email} failed signin, password \"#{password}\" is invalid")
       render :status=>401, :json=>{:errors=>["Invalid email or password."]}
     else
-      render :status=>200, :json=>{:token=>@user.authentication_token}
+      render :status=>200, :json=>{:token=>@user.authentication_token, :user=>@user}
     end
   end
 
