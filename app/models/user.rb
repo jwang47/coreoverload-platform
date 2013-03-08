@@ -19,18 +19,14 @@ class User < ActiveRecord::Base
   
   # friendships that are not reciprocated
   def requested_friends
-    logger.info "inverse: #{inverse_friends.map{|f| f.id}}"
-    logger.info "forward #{friends.map{|f| f.id}}"
-    logger.info "requested #{inverse_friends.map{|f| f.id} - friends.map{|f| f.id}}"
+    # TODO: optimize?
     request_ids = inverse_friends.map{|f| f.id} - friends.map{|f| f.id}
     User.where(:id => request_ids)
   end
   
   # friendships that are reciprocated
   def confirmed_friends
-    logger.info "inverse: #{inverse_friendships.map{|f| f.id}}"
-    logger.info "forward #{friendships.map{|f| f.id}}"
-    logger.info "confirmed #{inverse_friendships.map{|f| f.id} & friendships.map{|f| f.id}}"
+    # TODO: optimize?
     friend_ids = inverse_friends.map{|f| f.id} & friends.map{|f| f.id}
     User.where(:id => friend_ids)
   end
