@@ -1,6 +1,14 @@
 CoPlatform::Application.routes.draw do
 
   devise_for :users
+  
+  devise_scope :users do
+    namespace :api do
+      namespace :v1  do
+        resources :tokens,:only => [:create, :destroy]
+      end
+    end
+  end
 
   root :to => 'game_server#index'
   
