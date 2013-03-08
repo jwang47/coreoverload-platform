@@ -1,6 +1,6 @@
 CoPlatform::Application.routes.draw do
   
-  root :to => 'game_servers#index'
+  root :to => 'game_server#index'
 
   post 'friendships' => 'friendships#create'
   get 'friendships' => 'friendships#index'
@@ -17,10 +17,10 @@ CoPlatform::Application.routes.draw do
     end
   end
   
-  get 'game_servers/:id/heartbeat' => 'game_servers#heartbeat'
-  get 'game_servers/check' => 'game_servers#check_servers'
-  resources :game_servers
-  
+  get 'game_server/:id/heartbeat' => 'game_servers#heartbeat'
+  get 'game_server/check' => 'game_servers#check_servers'
+  resources :game_server
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
