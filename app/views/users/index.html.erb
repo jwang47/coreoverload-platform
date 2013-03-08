@@ -1,0 +1,65 @@
+
+
+<h1>users</h1>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <td>id</td>
+      <td>email</td>
+    </tr>
+  </thead>
+  
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to "Friend", friendships_path(:friend_id => user), :method => :post %></td>
+  </tr>
+  <% end %>
+</table>
+
+<% if current_user.confirmed_friends.empty? %>
+No friends
+<% else %>
+<% if user_signed_in? %>
+<table class="table table-condensed">
+  <caption>Friends</caption>
+  <thead>
+    <tr>
+      <td>friend id</td>
+      <td>friend email</td>
+    </tr>
+  </thead>
+  
+  <% current_user.confirmed_friends.each do |friend| %>
+  <tr>
+    <td><%= friend.id %></td>
+    <td><%= friend.email %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
+
+<% if current_user.requested_friends.empty? %>
+No friend requests
+<% else %>
+<table class="table table-condensed">
+  <caption>Friend requests</caption>
+  <thead>
+    <tr>
+      <td>requestor id</td>
+      <td>requestor email</td>
+    </tr>
+  </thead>
+  
+  <% current_user.requested_friends.each do |requestor| %>
+  <tr>
+    <td><%= requestor.id %></td>
+    <td><%= requestor.email %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
+
+<% end %>

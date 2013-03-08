@@ -1,7 +1,13 @@
 CoPlatform::Application.routes.draw do
+  
+  root :to => 'users#index'
+
+  post 'friendships' => 'friendships#create'
+  get 'friendships' => 'friendships#index'
+
+  get 'users/:id/friends' => 'users#friends'
 
   devise_for :users
-  
   devise_scope :users do
     namespace :api do
       namespace :v1  do
@@ -9,8 +15,6 @@ CoPlatform::Application.routes.draw do
       end
     end
   end
-
-  root :to => 'game_server#index'
   
   get 'game_server/:id/heartbeat' => 'game_server#heartbeat'
   get 'game_server/check' => 'game_server#check_servers'
