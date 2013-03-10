@@ -17,8 +17,8 @@ CoPlatform::Application.routes.draw do
     end
   end
   
-  get 'game_server/:id/heartbeat' => 'game_servers#heartbeat'
-  get 'game_server/check' => 'game_servers#check_servers'
+  get 'game_server/:id/heartbeat' => 'game_server#heartbeat'
+  get 'game_server/check' => 'game_server#check_servers'
   resources :game_server
  
   # The priority is based upon order of creation:
