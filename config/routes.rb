@@ -2,6 +2,7 @@ CoPlatform::Application.routes.draw do
   
   root :to => 'game_server#index'
 
+  delete 'friendships/:id' => 'friendships#destroy', :as => 'destroy_friendship'
   post 'friendships' => 'friendships#create'
   get 'friendships' => 'friendships#index'
 

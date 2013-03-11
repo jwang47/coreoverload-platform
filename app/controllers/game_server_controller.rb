@@ -50,7 +50,7 @@ class GameServerController < ApplicationController
     if @game_server.update_attributes(params[:game_server])
       render :json => @game_server
     else
-      render :json => { :errors => game_server.errors.full_messages }, :status => :unprocessable_entity
+      render :json => { :errors => @game_server.errors.full_messages }, :status => :unprocessable_entity
     end
   end
   
@@ -59,7 +59,7 @@ class GameServerController < ApplicationController
     if @game_server.destroy
       head :ok
     else
-      render :json => { :errors => game_server.errors.full_messages }, :status => :unprocessable_entity
+      render :json => { :errors => @game_server.errors.full_messages }, :status => :unprocessable_entity
     end
   end
   

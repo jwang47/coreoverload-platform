@@ -14,52 +14,37 @@
   <tr>
     <td><%= user.id %></td>
     <td><%= user.email %></td>
-    <td><%= link_to "Friend", friendships_path(:friend_id => user), :method => :post %></td>
+    <td>
+      <% if current_user == user %>
+      <% elsif current_user.confirmed_friends.include?(user) %>
+        <%= link_to "Unfriend", destroy_friendship_path(current_user.friendships.find_by_friend_id(user.id)), :method => :delete %>
+      <% elsif current_user.outgoing_requested_friends.include?(user) %>
+        Friend request sent!
+      <% elsif current_user.incoming_requested_friends.include?(user) %>
+        <%= link_to "Accept friend request", friendships_path(:friend_id => user), :method => :post %>
+      <% else %>
+        <%= link_to "Friend", friendships_path(:friend_id => user), :method => :post %>
+      <% end %>
+    </td>
   </tr>
   <% end %>
 </table>
 
-<% if current_user.confirmed_friends.empty? %>
-No friends
-<% else %>
-<% if user_signed_in? %>
-<table class="table table-condensed">
-  <caption>Friends</caption>
-  <thead>
-    <tr>
-      <td>friend id</td>
-      <td>friend email</td>
-    </tr>
-  </thead>
+<%= render 'friend_list',
+  :users => current_user.confirmed_friends,
+  :msg_users_empty => "No friends",
+  :caption => "Friends",
+  :label_user => "Friend" %>
+
+<%= render 'friend_list',
+  :users => current_user.incoming_requested_friends,
+  :msg_users_empty => "No incoming friend requests",
+  :caption => "Incoming friend requests",
+  :label_user => "Requestor" %>
   
-  <% current_user.confirmed_friends.each do |friend| %>
-  <tr>
-    <td><%= friend.id %></td>
-    <td><%= friend.email %></td>
-  </tr>
-  <% end %>
-</table>
-<% end %>
-
-<% if current_user.requested_friends.empty? %>
-No friend requests
-<% else %>
-<table class="table table-condensed">
-  <caption>Friend requests</caption>
-  <thead>
-    <tr>
-      <td>requestor id</td>
-      <td>requestor email</td>
-    </tr>
-  </thead>
+<%= render 'friend_list',
+  :users => current_user.outgoing_requested_friends,
+  :msg_users_empty => "No outgoing friend requests",
+  :caption => "Outgoing friend requests",
+  :label_user => "User" %>
   
-  <% current_user.requested_friends.each do |requestor| %>
-  <tr>
-    <td><%= requestor.id %></td>
-    <td><%= requestor.email %></td>
-  </tr>
-  <% end %>
-</table>
-<% end %>
-
-<% end %>

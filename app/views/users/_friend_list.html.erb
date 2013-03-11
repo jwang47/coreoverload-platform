@@ -1,0 +1,24 @@
+<%
+# requires users, msg_users_empty, caption, label_user
+%>
+
+<% if users.empty? %>
+<p><%= msg_users_empty %></p>
+<% else %>
+<h3><%= caption %></h3>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <td><%= label_user %> id</td>
+      <td><%= label_user %> email</td>
+    </tr>
+  </thead>
+  
+  <% users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
