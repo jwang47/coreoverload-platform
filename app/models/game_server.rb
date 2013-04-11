@@ -38,7 +38,10 @@ class GameServer < ActiveRecord::Base
   # TODO: Allow game servers to revive themselves
   def self.checked_all
     all.each do |server|
-      server.destroy() if server.heartbeat_elapsed() > GS_HEARTBEAT_LIMIT
+      if server.heartbeat_elapsed() > GS_HEARTBEAT_LIMIT
+        logger.info "Destroying game server #{server.id} due to heartbeaet timeout (#{server.heartbeat_elapsed()})"
+        server.destroy()
+      end
     end
     
     all
