@@ -20,11 +20,7 @@ class GameServer < ActiveRecord::Base
   end
   
   def heartbeat_elapsed
-    if self.started_at.nil?
-      GS_HEARTBEAT_LIMIT + 1
-    else
-      (Time.now.to_f - self.heartbeat.to_f).to_i
-    end
+    (Time.now.to_f - self.heartbeat.to_f).to_i
   end
   
   def num_players
