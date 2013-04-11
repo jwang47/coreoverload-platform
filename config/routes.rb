@@ -13,7 +13,7 @@ CoPlatform::Application.routes.draw do
   devise_scope :users do
     namespace :api do
       namespace :v1  do
-        resources :tokens,:only => [:create, :destroy]
+        resource :token,:only => [:create, :destroy]
       end
     end
   end
