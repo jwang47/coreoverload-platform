@@ -9,6 +9,7 @@
       <th>ip address</th>
       <th># players</th>
       <th># red / blue</th>
+      <th>time started</th>
       <th>time since start</th>
       <th>time since heartbeat</th>
       </tr>
@@ -19,6 +20,7 @@
         <td><%= server.ip_address %></td>
         <td><%= server.num_players %>/<%= server.max_players %></td>
         <td><%= server.num_red_players %>/<%= server.num_blue_players %></td>
+        <td><%= server.started_at %></td>
         <td><%= server.started_elapsed %></td>
         <td><%= server.heartbeat_elapsed %></td>
       </tr>
