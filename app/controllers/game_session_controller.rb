@@ -5,7 +5,7 @@ class GameSessionController < ApplicationController
   # {stats_attributes [{user_id: 13, kills: 3, deaths: 2, ..}, {user_id: 32, ..}, {user_id: 52, ..} ]}
   def create
     @game_session = GameSession.create(params[:game_session])
-    @game_session.stats.build
+    #@game_session.stats.build
     save_and_render(@game_session)
   end
   
