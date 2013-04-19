@@ -1,6 +1,9 @@
 
 id: <%= @user.id %><br>
 email: <%= @user.email %><br>
+<br>
+# wins: <%= @user.num_wins %><br>
+# losses: <%= @user.num_losses %><br>
 
 <h3>match history</h3>
 <% @user.match_history.each do |stats| %>

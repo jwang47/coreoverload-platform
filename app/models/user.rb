@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   
+  def num_wins
+    game_session_user_stats.where(:victory => true).count
+  end
+  
+  def num_losses
+    game_session_user_stats.where(:victory => false).count
+  end
+  
   def match_history
     logger.info game_session_user_stats
     game_session_user_stats.all(:order => "created_at desc", :limit => 10)
