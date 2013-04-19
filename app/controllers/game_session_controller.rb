@@ -9,6 +9,10 @@ class GameSessionController < ApplicationController
     save_and_render(@game_session)
   end
   
+  def show
+    @game_session = GameSession.find(params[:id])
+  end
+  
 private
 
   def save_and_render(model)
