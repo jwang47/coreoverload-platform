@@ -6,7 +6,7 @@ email: <%= @user.email %><br>
 <% @user.match_history.each do |stats| %>
   <div class="well">
     victory: <%= stats.victory %><br>
-    time: <%= stats.created_at %><br>
+    time: <%= timeago_tag stats.created_at, :nojs => true, :limit => 10.days.ago %><br>
     kills: <%= stats.kills %><br>
     deaths: <%= stats.deaths %><br>
   </div>

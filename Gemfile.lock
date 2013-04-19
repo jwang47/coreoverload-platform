@@ -86,6 +86,9 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails-timeago (2.2.2)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
     railties (3.2.11)
       actionpack (= 3.2.11)
       activesupport (= 3.2.11)
@@ -133,6 +136,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 3.2.11)
+  rails-timeago (~> 2.0)
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)

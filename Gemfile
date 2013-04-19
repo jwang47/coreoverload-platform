@@ -13,6 +13,7 @@ gem 'font-awesome-rails'
 gem 'devise'
 
 gem 'ipaddress'
+gem 'rails-timeago', '~> 2.0'
 
 group :production do
   gem 'pg'
