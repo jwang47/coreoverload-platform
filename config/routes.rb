@@ -11,6 +11,7 @@ CoPlatform::Application.routes.draw do
   get 'users/:id/friends' => 'users#friends'
 
   get 'users' => 'users#index', :as => 'users'
+  get 'users/:id' => 'users#show', :as => 'user'
   devise_for :users
   devise_scope :users do
     namespace :api do

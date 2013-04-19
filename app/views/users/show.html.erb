@@ -1,0 +1,13 @@
+
+id: <%= @user.id %><br>
+email: <%= @user.email %><br>
+
+<h3>match history</h3>
+<% @user.match_history.each do |stats| %>
+  <div class="well">
+    victory: <%= stats.victory %><br>
+    time: <%= stats.created_at %><br>
+    kills: <%= stats.kills %><br>
+    deaths: <%= stats.deaths %><br>
+  </div>
+<% end %>
