@@ -10,6 +10,7 @@ time: <%= timeago_tag @game_session.created_at, :nojs => true, :limit => 10.days
     player: null
     <% end %>
     <br>
+    score: <%= stats.score %><br>
     kills: <%= stats.kills %><br>
     deaths: <%= stats.deaths %>
   </div>

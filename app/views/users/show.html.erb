@@ -10,6 +10,7 @@ email: <%= @user.email %><br>
   <div class="well">
     victory: <%= stats.victory %><br>
     time: <%= timeago_tag stats.created_at, :nojs => true, :limit => 10.days.ago %><br>
+    score: <%= stats.score %><br>
     kills: <%= stats.kills %><br>
     deaths: <%= stats.deaths %><br>
     <%= link_to "more details", game_session_path(stats.game_session) %>
