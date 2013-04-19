@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  kills: 1
+  deaths: 1
+  flags_captured_count: 1
+  flags_captured_points: 1
+  capture_point_count: 1
+  cpature_point_time: 1
+  capture_point_points: 1
+
+two:
+  user_id: 1
+  kills: 1
+  deaths: 1
+  flags_captured_count: 1
+  flags_captured_points: 1
+  capture_point_count: 1
+  cpature_point_time: 1
+  capture_point_points: 1

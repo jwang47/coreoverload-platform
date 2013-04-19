@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308044548) do
+ActiveRecord::Schema.define(:version => 20130418235112) do
 
   create_table "friend_requests", :force => true do |t|
     t.integer  "requestor_id"
@@ -37,6 +37,27 @@ ActiveRecord::Schema.define(:version => 20130308044548) do
     t.datetime "started_at"
     t.integer  "num_red_players",  :default => 0
     t.integer  "num_blue_players", :default => 0
+  end
+
+  create_table "game_session_user_stats", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "victory"
+    t.integer  "kills"
+    t.integer  "deaths"
+    t.integer  "flags_captured_count"
+    t.integer  "flags_captured_points"
+    t.integer  "capture_point_count"
+    t.integer  "capture_point_time"
+    t.integer  "capture_point_points"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "game_session_id"
+  end
+
+  create_table "game_sessions", :force => true do |t|
+    t.integer  "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

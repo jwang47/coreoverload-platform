@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   
+  has_many :game_session_user_stats
+  
   has_many :friendships
   has_many :friends, :through => :friendships
   

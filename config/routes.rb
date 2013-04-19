@@ -1,6 +1,8 @@
 CoPlatform::Application.routes.draw do
-  
+
   root :to => 'game_server#index'
+  
+  resources :game_session
 
   delete 'friendships/:id' => 'friendships#destroy', :as => 'destroy_friendship'
   post 'friendships' => 'friendships#create'
