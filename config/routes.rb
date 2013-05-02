@@ -12,6 +12,7 @@ CoPlatform::Application.routes.draw do
   get 'users/:id/friends' => 'users#friends'
 
   get 'users' => 'users#index', :as => 'users'
+  get 'users/:id/recent' => 'users#show_recent', :constraints => { :id => /\d+/ }, :as => 'user_recent'
   get 'users/:id' => 'users#show', :constraints => { :id => /\d+/ }, :as => 'user'
   devise_for :users
   devise_scope :users do
