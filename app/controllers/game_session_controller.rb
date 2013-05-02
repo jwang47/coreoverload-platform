@@ -11,6 +11,10 @@ class GameSessionController < ApplicationController
   
   def show
     @game_session = GameSession.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render :json => @game_session.to_json }
+    end
   end
   
 private
