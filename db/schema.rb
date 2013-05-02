@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419005708) do
+ActiveRecord::Schema.define(:version => 20130502233244) do
 
   create_table "friend_requests", :force => true do |t|
     t.integer  "requestor_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130419005708) do
     t.datetime "updated_at",            :null => false
     t.integer  "game_session_id"
     t.float    "score"
+    t.string   "username"
   end
 
   create_table "game_sessions", :force => true do |t|
