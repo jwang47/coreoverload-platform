@@ -20,7 +20,7 @@ class Api::V1::TokensController  < ApplicationController
 
     if @user.nil?
       logger.info("User #{email} failed signin, user cannot be found.")
-      render :status=>401, :json=>{:errors=>["Invalid email or passoword."]}
+      render :status=>401, :json=>{:errors=>["Invalid email or password."]}
       return
     end
 

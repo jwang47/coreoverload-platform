@@ -11,6 +11,7 @@ CoPlatform::Application.routes.draw do
 
   get 'users/:id/friends' => 'users#friends'
 
+  put 'users/:id' => 'users#update', :constraints => { :id => /\d+/ }
   get 'users' => 'users#index', :as => 'users'
   get 'users/:id/recent' => 'users#show_recent', :constraints => { :id => /\d+/ }, :as => 'user_recent'
   get 'users/:id' => 'users#show', :constraints => { :id => /\d+/ }, :as => 'user'
