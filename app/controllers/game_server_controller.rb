@@ -22,6 +22,7 @@ class GameServerController < ApplicationController
       end
     else
       @game_servers = GameServer.checked_all
+      @recent_sessions = GameSession.history
       respond_to do |format|
         format.html # index.html.erb
         format.json { render :json => @game_servers }

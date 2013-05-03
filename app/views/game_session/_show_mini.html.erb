@@ -1,0 +1,8 @@
+<%
+# params game_session
+%>
+<div class="well">
+id: <%= game_session.id %><br>
+time: <%= timeago_tag game_session.created_at, :nojs => true, :limit => 10.days.ago %><br>
+<%= link_to "more details", game_session_path(game_session) %>
+</div>

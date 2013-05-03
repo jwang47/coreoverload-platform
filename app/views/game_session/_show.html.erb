@@ -1,0 +1,21 @@
+<%
+# params game_session
+%>
+
+id: <%= game_session.id %><br>
+time: <%= timeago_tag game_session.created_at, :nojs => true, :limit => 10.days.ago %><br>
+<% game_session.stats.each do |stats| %>
+
+  <div class="well">
+    <% if stats.user != nil %>
+    player: <%= link_to stats.user.email, user_path(stats.user) %>
+    <% else %>
+    player: <%= stats.display_name %>
+    <% end %>
+    <br>
+    score: <%= stats.score %><br>
+    kills: <%= stats.kills %><br>
+    deaths: <%= stats.deaths %>
+  </div>
+
+<% end %>

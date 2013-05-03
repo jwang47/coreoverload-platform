@@ -9,4 +9,8 @@ class GameSession < ActiveRecord::Base
     hash_info[:stats] = stats
     hash_info
   end
+    
+  def self.history
+    GameSession.all(:order => "created_at desc", :limit => 10)
+  end
 end

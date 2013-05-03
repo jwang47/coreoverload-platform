@@ -1,29 +1,38 @@
 <% if @game_servers.empty? %>
-  no game servers found<br>
+<h3>No game servers found</h3>
 <% else %>
-  <table class="table table-striped">
-    <caption>Available servers</caption>
-    <thead>
-      <tr>
-      <th>id</th>
-      <th>ip address</th>
-      <th># players</th>
-      <th># red / blue</th>
-      <th>time started</th>
-      <th>time since start</th>
-      <th>time since heartbeat</th>
-      </tr>
-    </thead>
-    <% @game_servers.each do |server| %>
-      <tr>
-        <td><%= server.id %></td>
-        <td><%= server.ip_address %></td>
-        <td><%= server.num_players %>/<%= server.max_players %></td>
-        <td><%= server.num_red_players %>/<%= server.num_blue_players %></td>
-        <td><%= server.started_at %></td>
-        <td><%= server.started_elapsed %></td>
-        <td><%= server.heartbeat_elapsed %></td>
-      </tr>
-    <% end %>
-  </table>
+<h3>Available servers</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th>id</th>
+    <th>ip address</th>
+    <th># players</th>
+    <th># red / blue</th>
+    <th>time started</th>
+    <th>time since start</th>
+    <th>time since heartbeat</th>
+    </tr>
+  </thead>
+  <% @game_servers.each do |server| %>
+    <tr>
+      <td><%= server.id %></td>
+      <td><%= server.ip_address %></td>
+      <td><%= server.num_players %>/<%= server.max_players %></td>
+      <td><%= server.num_red_players %>/<%= server.num_blue_players %></td>
+      <td><%= server.started_at %></td>
+      <td><%= server.started_elapsed %></td>
+      <td><%= server.heartbeat_elapsed %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+<% if @recent_sessions.empty? %>
+<h3>No recent games found</h3>
+<% else %>
+<h3>Recent games</h3>
+<% @recent_sessions.each do |session| %>
+<%= render 'game_session/show_mini', game_session: session %>
+<% end %>
 <% end %>
