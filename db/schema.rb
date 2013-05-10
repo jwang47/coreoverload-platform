@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503004022) do
+ActiveRecord::Schema.define(:version => 20130510224145) do
 
   create_table "friend_requests", :force => true do |t|
     t.integer  "requestor_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130503004022) do
     t.datetime "started_at"
     t.integer  "num_red_players",  :default => 0
     t.integer  "num_blue_players", :default => 0
+    t.string   "name"
   end
 
   create_table "game_session_user_stats", :force => true do |t|

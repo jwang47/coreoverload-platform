@@ -8,6 +8,7 @@ class GameServer < ActiveRecord::Base
   #validate :num_players_lt_max_players
   validate :num_players_gte_zero
   
+  attr_accessible :name
   attr_accessible :ip_address, :max_players
   attr_accessible :started_at, :num_red_players, :num_blue_players
   
